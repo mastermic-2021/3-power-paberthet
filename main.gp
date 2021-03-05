@@ -27,7 +27,7 @@ idempotence(mat)={
   check = mat;
   tmp = mat;
   mat = tmp*mat;
-  while(1-(check == mat),
+  while((1-(check == mat)),
     mat = mat*tmp;
     i++;
     );
