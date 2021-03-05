@@ -9,14 +9,17 @@ encodegln(s,n)={
 text = readvec("input.txt")[1];
 mat = encodegln(text,12);
 
-\\encodage ici celui de mehdi en raison du pb de taille de message (et comme je n'ai pas reçu le challenge 4 je suppose qu'il est nécessaire que le make check ici fonctionne ?)
-decodegln(M)={
-  my(v,n);
-  n= matsize(M)[1];
-  v= Vec( concat(Vec(M~))~, n*n-1);
-  v= Strchr([ if (s == 0, 32, s + 96) | s <- v]);
-  v;
-}
+
+\\encodage
+decodegln(mat,n)={
+  tmp = [];
+  for(i = 1,n,
+    for(j = 1,n,
+      if(i==n && j==n,0,tmp = concat(tmp, lift(mat[i,j]));
+    );
+  );
+  tmp = Strchr([if(c==0,32,c+96) | c <- tmp]);
+  return(tmp);
 
 \\ici on cherche l ordre de la matrice. c du brute force mais je me demande si on peut pas faire cela par palier de 18 et non de 1. explications en fin de code
 idempotence(mat)={
