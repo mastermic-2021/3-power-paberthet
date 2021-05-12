@@ -12,15 +12,14 @@ mat = encodegln(text,12);
 
 \\encodage
 decodegln(mat,n)={
-  V = vector(n*n,i,0);
-  k = 1;
-  for(i=1,n,
-    for(j=1,n,
-      V[k]= if(lift(mat[i,j]) ==0, 32, lift(mat[i,j])+96);
-      k+=1;
+  tmp = [];
+  for(i = 1,n,
+    for(j = 1,n,
+      if(i==n && j==n,0,tmp = concat(tmp, lift(mat[i,j])));
     );
   );
-  Strchr(vecextract(V,"1..143"));
+  tmp = Strchr(vecextract([if(c==0,32,c+96) | c <- tmp],"1..143"));
+  return(tmp);
 }
 \\ici on cherche l ordre de la matrice. c du brute force mais je me demande si on peut pas faire cela par palier de 18 et non de 1. explications en fin de code
 idempotence(mat)={
