@@ -20,7 +20,7 @@ decodegln(mat,n)={
       k+=1;
     );
   );
-  Strchr(vecextract(V,"1..143");
+  Strchr(vecextract(V,"1..143"));
 }
 \\ici on cherche l ordre de la matrice. c du brute force mais je me demande si on peut pas faire cela par palier de 18 et non de 1. explications en fin de code
 idempotence(mat)={
