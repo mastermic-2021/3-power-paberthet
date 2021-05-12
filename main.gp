@@ -16,7 +16,7 @@ decodegln(mat,n)={
   k = 1;
   for(i=1,n,
     for(j=1,n,
-      V[k]= if(mat[i,j] ==0, 32, mat[i,j]+96);
+      V[k]= if(lift(mat[i,j]) ==0, 32, lift(mat[i,j])+96);
       k+=1;
     );
   );
