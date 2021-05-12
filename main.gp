@@ -18,8 +18,8 @@ decodegln(mat,n)={
       if(i==n && j==n,0,tmp = concat(tmp, lift(mat[i,j])));
     );
   );
-  tmp = Strchr([if(c==0,32,c+96) | c <- tmp]);
-  return(tmp);
+  tmp = [if(c==0,32,c+96) | c <- tmp];
+  return(Strchr(vecextract(tmp,"1..143")));
 }
 \\ici on cherche l ordre de la matrice. c du brute force mais je me demande si on peut pas faire cela par palier de 18 et non de 1. explications en fin de code
 idempotence(mat)={
@@ -38,7 +38,7 @@ idempotence(mat)={
 mat = mat*Mod(1,27);
 mat = mat^(lift(1/Mod(65537,idempotence(mat))));
 
-print(vecextract(decodegln(mat,12),"1..143"));
+print(decodegln(mat,12));
 
 
 \\pour ce qui est des paliers de 18. Une premiere approche du probleme a ete de chercher a diagonaliser le chiffre. En effet, une fois le chiffre
