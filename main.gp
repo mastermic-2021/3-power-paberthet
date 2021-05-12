@@ -38,7 +38,7 @@ idempotence(mat)={
 mat = mat*Mod(1,27);
 mat = mat^(lift(1/Mod(65537,idempotence(mat))));
 
-print(vecextract(decodegln(mat,12)),"1..143");
+print(vecextract(decodegln(mat,12),"1..143"));
 
 
 \\pour ce qui est des paliers de 18. Une premiere approche du probleme a ete de chercher a diagonaliser le chiffre. En effet, une fois le chiffre
